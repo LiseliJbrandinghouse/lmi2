@@ -1,0 +1,258 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="hero-section">
+  <div class="texts-container">
+    <h1>
+      <span class="slide-text delay-1">Ready to</span> <br />
+      <span class="highlight slide-text delay-2">transform</span> <br />
+      <span class="slide-text delay-3">your future?</span>
+    </h1>
+  </div>
+  <div class="image-container">
+    <img src="{% static 'images/kaite.png' %}" alt="Person on Exercise Bike" />
+  </div>
+</section>
+
+<section class="belief-section">
+  <p>
+    At <strong>LMI Health</strong>, we believe that true health and well-being
+    are achieved by addressing the root causes of illness and promoting
+    sustainable lifestyle changes.
+  </p>
+</section>
+
+<section class="about-section">
+  <div class="about-content">
+    <h2 class="animate">We are LMI Health</h2>
+    <p class="animate">
+      At LMI Health, we address the root causes of illness with sustainable
+      lifestyle changes, focusing on nutrition, activity, stress management, and
+      social connections to prevent and reverse chronic diseases. We prioritize
+      inclusivity and equity, ensuring everyone has access to optimal health. We
+      empower individuals and communities through education, advocacy, and
+      personalized care to take transformative steps toward better health.
+    </p>
+    <a href="#" class="cta-button animate">Schedule an appointment</a>
+  </div>
+  <div class="about-image">
+    <img
+      src="{% static 'images/critical.png' %}"
+      alt="A healthy woman meditating outdoors"
+    />
+  </div>
+</section>
+
+<section class="schedule-section slide-up">
+  <div class="tex-container">
+    <h1 class="slide-left">We are LMI Health</h1>
+    <p>
+      At LMI Health, we address the root causes of illness with sustainable
+      lifestyle changes, focusing on nutrition, activity, stress management, and
+      social connections to prevent and reverse chronic diseases. We prioritize
+      inclusivity and equity, ensuring everyone has access to optimal health.
+    </p>
+    <a href="#" class="cta-button animate">Schedule an appointment</a>
+  </div>
+  <div class="images-container slide-right">
+    <img src="{% static 'images/exercise1.png' %}" alt="Person Stretching" />
+  </div>
+</section>
+
+<section class="head-section">
+  <div class="head-content">
+    <h1>Lifestyle diseases we treat</h1>
+  </div>
+</section>
+
+<section class="diseases-section">
+  <div class="diseases-container">
+    <div class="row">
+      <div class="disease-tag gray">Diabetes</div>
+      <div class="disease-tag light-green">Depression</div>
+      <div class="disease-tag brown">Obesity</div>
+      <div class="disease-tag red">Sleep Disorders</div>
+    </div>
+    <div class="row">
+      <div class="disease-tag teal">Heart Disease</div>
+      <div class="disease-tag orange">Cancer</div>
+      <div class="disease-tag green">Hypertension</div>
+      <div class="disease-tag dark-green">Stress</div>
+    </div>
+    <div class="row">
+      <div class="disease-tag dark-orange">Liver Disease</div>
+      <div class="disease-tag blue">Dementia</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="testimonial-content">
+    <img
+      src="{% static 'images/healthyf1.png' %}"
+      alt="Healthy Bowl of Food"
+      class="testimonial-image"
+    />
+    <div class="testimonial-text">
+      <p>
+        Hi Doc, thanks for the help you’ve given to dad. Since he got onto the
+        programme with you, his numbers have balanced up and he can almost
+        intuitively run his own trajectory. Without your expertise, life would
+        be so much different, and probably a lot more loss made medically and
+        financially. lol Please continue to be there for others. The world needs
+        you!
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="appointment-section">
+  <div class="appointment-content">
+    <img
+      src="{% static 'images/medi.webp' %}"
+      alt="Person practicing yoga"
+      class="appointment-image"
+    />
+    <div class="appointment-text">
+      <h2>Make an appointment today!</h2>
+      <a href="#schedule" class="appointment-button">Schedule an appointment</a>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section">
+  <h2 class="partners-title">LMI Health Partners</h2>
+  <div class="partners-slider">
+    <!-- Slide 1 -->
+    <div class="partners-slide">
+      <img src="{% static 'images/logo.png' %}" alt="Partner 1" />
+      <img src="{% static 'images/logo.png' %}" alt="Partner 2" />
+      <img src="{% static 'images/logo.png' %}" alt="Partner 3" />
+    </div>
+    <!-- Slide 2 -->
+    <div class="partners-slide">
+      <img src="{% static 'images/logo.png' %}" alt="Partner 4" />
+      <img src="{% static 'images/logo.png' %}" alt="Partner 5" />
+      <img src="{% static 'images/logo.png' %}" alt="Partner 6" />
+    </div>
+    <!-- Slide 3 -->
+    <div class="partners-slide">
+      <img src="{% static 'images/logo.png' %}" alt="Partner 7" />
+      <img src="{% static 'images/logo.png' %}" alt="Partner 8" />
+      <img src="{% static 'images/logo.png' %}" alt="Partner 9" />
+    </div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  const slides = document.querySelectorAll(".partners-slide");
+  let currentIndex = 0;
+
+  function showNextSlide() {
+    slides[currentIndex].style.display = "none";
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].style.display = "flex";
+  }
+
+  // Initialize
+  slides.forEach((slide, index) => {
+    slide.style.display = index === 0 ? "flex" : "none";
+  });
+
+  // Automatic transition
+  setInterval(showNextSlide, 3000); // Change every 3 seconds
+
+  ////////////////////////tags
+  document.addEventListener("DOMContentLoaded", function () {
+    const tags = document.querySelectorAll(".disease-tag");
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("visible");
+            }, index * 150); // Delay each tag by 150ms
+            observer.unobserve(entry.target); // Stop observing once animated
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of the section is visible
+    );
+
+    tags.forEach((tag) => observer.observe(tag));
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("slide-in-left", "slide-in-right");
+        }
+      });
+    });
+
+    // Select elements to animate
+    const elementsToAnimate = document.querySelectorAll(
+      ".slide-left, .slide-right"
+    );
+
+    elementsToAnimate.forEach((element) => observer.observe(element));
+  });
+
+  //////////////////schedule
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("slide-in-up");
+          observer.unobserve(entry.target); // Stop observing once animation is triggered
+        }
+      });
+    });
+
+    // Select the section to animate
+    const sectionToAnimate = document.querySelector(".slide-up");
+
+    if (sectionToAnimate) {
+      observer.observe(sectionToAnimate);
+    }
+  });
+
+  /////////////////////////about////////////////////
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll(".animate");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("active");
+            }, index * 300); // Add a delay for each element
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the section is visible
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+  });
+
+  //////hero////////
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const slideTexts = document.querySelectorAll(".slide-text");
+
+    // Add the 'active' class to each text with a delay
+    slideTexts.forEach((text, index) => {
+      setTimeout(() => {
+        text.classList.add("active");
+      }, 400 * index); // Adjust the delay between each text
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="donate-container">
+  <div class="donate-background">
+    <h1>DONATE NOW</h1>
+    <p>
+      People Proclaiming the <strong>STATE <br />OF AFRIKA,</strong> Making
+      Africa Work.
+    </p>
+    <p><a href="#"> Donate here.</a></p>
+  </div>
+  <div class="donate-form">
+    <form id="donationForm" method="POST" action="#">
+      {% csrf_token %}
+      <div class="frequency-toggle">
+        <button type="button" id="one-time-btn" class="active">One-time</button>
+        <button type="button" id="monthly-btn">Monthly</button>
+      </div>
+      <div class="amount-buttons">
+        <button type="button" data-amount="1000" class="amount-button">
+          €1,000
+        </button>
+        <button type="button" data-amount="500" class="amount-button">
+          €500
+        </button>
+        <button type="button" data-amount="250" class="amount-button">
+          €250
+        </button>
+        <button type="button" data-amount="100" class="amount-button">
+          €100
+        </button>
+        <button type="button" data-amount="50" class="amount-button">
+          €50
+        </button>
+        <button type="button" data-amount="25" class="amount-button">
+          €25
+        </button>
+      </div>
+      <div class="custom-amount">
+        <input type="number" id="amount" name="amount" value="60" />
+        <select id="currency" name="currency">
+          <option value="EUR">EUR</option>
+          <option value="USD">USD</option>
+          <option value="GBP">GBP</option>
+          <!-- Add more currencies as needed -->
+        </select>
+      </div>
+      <div class="dedicate">
+        <input type="checkbox" id="dedicate" name="dedicate" />
+        <label for="dedicate">Dedicate this donation</label>
+      </div>
+      <button type="submit">Donate</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const amountButtons = document.querySelectorAll(".amount-button");
+    const currencySelect = document.getElementById("currency");
+    const apiKey = "53f6aeda6d3751b00f5c138f"; // Replace with your actual API key
+
+    // Store original amounts in EUR
+    const originalAmounts = Array.from(amountButtons).map((button) =>
+      parseFloat(button.getAttribute("data-amount"))
+    );
+
+    currencySelect.addEventListener("change", function () {
+      updateButtonAmounts(this.value);
+    });
+
+    function updateButtonAmounts(currency) {
+      fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/EUR`)
+        .then((response) => response.json())
+        .then((data) => {
+          const conversionRate = data.conversion_rates[currency];
+          amountButtons.forEach((button, index) => {
+            const convertedAmount = originalAmounts[index] * conversionRate;
+            button.innerHTML = `${currencySymbol(
+              currency
+            )}${convertedAmount.toFixed(2)}`;
+            button.setAttribute("data-amount", convertedAmount.toFixed(2));
+          });
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+
+    function currencySymbol(currency) {
+      switch (currency) {
+        case "USD":
+          return "$";
+        case "EUR":
+          return "€";
+        case "GBP":
+          return "£";
+        default:
+          return "";
+      }
+    }
+  });
+</script>
+
+{% endblock %}

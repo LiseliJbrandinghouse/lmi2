@@ -1,0 +1,114 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="appointment-section">
+  <div class="contai">
+    <h2 class="section-title">Make an Appointment</h2>
+    <div class="appointment-wrapper">
+      <!-- Appointment Form -->
+      <form class="appointment-form" method="POST">
+        {% csrf_token %}
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="full_name">Full Name</label>
+          {{ form.full_name }}
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          {{ form.email }}
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          {{ form.phone }}
+        </div>
+
+        <!-- Preferred Date -->
+        <div class="form-group">
+          <label for="preferred_date">Preferred Date</label>
+          <input
+            type="text"
+            name="preferred_date"
+            class="datepicker"
+            placeholder="Select a date"
+            value="{{ form.preferred_date.value|default:'' }}"
+          />
+        </div>
+
+        <!-- Preferred Time -->
+        <div class="form-group">
+          <label for="preferred_time">Preferred Time</label>
+          <input
+            type="text"
+            name="preferred_time"
+            class="timepicker"
+            placeholder="Select a time"
+            value="{{ form.preferred_time.value|default:'' }}"
+          />
+        </div>
+
+        <!-- Appointment Type -->
+        <div class="form-group">
+          <label for="appointment_type">Appointment Type</label>
+          {{ form.appointment_type }}
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label for="message">Message</label>
+          {{ form.message }}
+        </div>
+
+        <!-- Success Messages -->
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+          <div class="message {{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+
+      <!-- Appointment Image -->
+      <div class="appointment-image">
+        <img
+          src="{% static 'images/johnkaite.jpg' %}"
+          alt="Doctor and Patient"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Include Flatpickr -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Flatpickr for preferred_date
+    flatpickr(".datepicker", {
+      altInput: true,
+      altFormat: "F j, Y",
+      dateFormat: "Y-m-d",
+    });
+
+    // Initialize Flatpickr for preferred_time
+    flatpickr(".timepicker", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      time_24hr: true,
+    });
+  });
+</script>
+
+{% endblock %}

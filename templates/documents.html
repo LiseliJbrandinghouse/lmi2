@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="documents-container">
+  <h1>Available Documents</h1>
+  <div class="documents-list">
+    <div class="document-item">
+      <h3>Document 1</h3>
+      <p>Description of Document 1</p>
+      <a
+        href="{% static 'documents/ADI.pdf' %}"
+        download
+        class="download-button"
+        >Download</a
+      >
+    </div>
+
+    <!-- Add more documents as needed -->
+  </div>
+</div>
+{% endblock %}

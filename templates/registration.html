@@ -1,0 +1,414 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+  .containere {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    background-color: #fff;
+    margin: 100px auto 0; /* Centers horizontally with auto */
+    margin-top: 100px;
+  }
+
+  .form-container,
+  .info-container {
+    padding: 40px;
+    width: 50%;
+  }
+
+  .logo img {
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="checkbox"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #e48713;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 50px;
+    font-size: 1.5em;
+  }
+
+  .submit-btn:hover {
+    background-color: #e48713;
+  }
+
+  /* Sleeker styling for the select dropdown */
+  .form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    padding-right: 35px; /* Space for custom arrow */
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  /* Custom arrow with a pseudo-element */
+  .form-group select::after {
+    content: "▼"; /* Unicode arrow symbol */
+    font-size: 14px;
+    color: #999;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Ensures it doesn’t interfere with select */
+  }
+
+  /* Style for focused select dropdown */
+  .form-group select:focus {
+    border-color: #e48713;
+    box-shadow: 0 0 5px rgba(228, 135, 19, 0.5);
+    outline: none;
+  }
+
+  /* Placeholder (default) color */
+  .form-group select option[value=""] {
+    color: #aaa;
+  }
+
+  /* Styling individual options */
+  .form-group select option {
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  /* Customize select dropdown on selection */
+  .form-group select:valid {
+    color: #333;
+  }
+
+  /* Optional: Additional container styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .info-container {
+    background-color: #f9f9f9;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    margin-top: -400px;
+  }
+  .info-container h3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+
+  .info-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+  }
+
+  .info-container ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+  }
+
+  .info-container ul li::before {
+    content: "✔";
+    color: green;
+    margin-right: 10px;
+  }
+
+  .trial-btn {
+    padding: 15px;
+    background-color: #e48713;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .trial-btn:hover {
+    background-color: #e48713;
+  }
+
+  .info-container p {
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .containere {
+      flex-direction: column;
+    }
+
+    .form-container,
+    .info-container {
+      width: 100%;
+      padding: 20px;
+    }
+    .info-container h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      margin-top: 100px;
+    }
+    .containere {
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      background-color: #fff;
+      margin-left: -1px;
+    }
+  }
+
+  .note {
+    font-size: 0.95em;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-left: 4px solid #007b5e;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  .note em {
+    font-style: italic;
+  }
+
+  /* Slide-in animation */
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px); /* Start from right */
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0); /* End in position */
+    }
+  }
+
+  /* Apply the animation to the h2 element */
+  .info-container h2 {
+    opacity: 0; /* Start hidden */
+    animation: slideInFromRight 5.8s ease-out forwards; /* Adjust duration as needed */
+  }
+</style>
+
+<section class="registration-hero-banner">
+  <div class="registration-banner-overlay">
+    <div class="registration-banner-content">
+      <!--  <h1>Join the Movement</h1>
+      <p>Register today and be a part of shaping the future of Africa.</p>-->
+    </div>
+  </div>
+</section>
+
+<div class="containere">
+  <div class="form-container">
+    <h1>REGISTRATION FORM</h1>
+    <form>
+      <div class="form-group">
+        <label for="date">DATE:</label>
+        <input type="text" id="date" name="date" />
+      </div>
+
+      <div class="form-group">
+        <label for="title">TITLE:</label>
+        <input type="checkbox" id="prof" name="title" value="Prof" />Prof
+        <input type="checkbox" id="dr" name="title" value="Dr" />Dr
+        <input type="checkbox" id="others" name="title" value="Others" />Others
+        <input type="text" id="other-title" name="other-title" />
+      </div>
+
+      <div class="form-group">
+        <label for="fore-names">FORE NAMES:</label>
+        <input type="text" id="fore-names" name="fore-names" />
+      </div>
+
+      <div class="form-group">
+        <label for="surname">SURNAME:</label>
+        <input type="text" id="surname" name="surname" />
+      </div>
+
+      <div class="form-group">
+        <label for="sex">SEX:</label>
+        <input type="text" id="sex" name="sex" />
+        <label for="age">AGE:</label>
+        <input type="text" id="age" name="age" />
+      </div>
+
+      <div class="form-group">
+        <label for="nationality">NATIONALITY:</label>
+        <input type="text" id="nationality" name="nationality" />
+      </div>
+
+      <div class="form-group">
+        <label for="passport-no">PASSPORT NO.:</label>
+        <input type="text" id="passport-no" name="passport-no" />
+      </div>
+
+      <div class="form-group">
+        <label for="date-of-issue">DATE OF ISSUE:</label>
+        <input type="text" id="date-of-issue" name="date-of-issue" />
+        <label for="place-of-issue">PLACE OF ISSUE:</label>
+        <input type="text" id="place-of-issue" name="place-of-issue" />
+      </div>
+
+      <div class="form-group">
+        <label for="organization">ORGANIZATION YOU REPRESENT:</label>
+        <input type="text" id="organization" name="organization" />
+      </div>
+
+      <div class="form-group">
+        <label for="contact-info">CONTACT INFORMATION:</label>
+        <input type="text" id="contact-info" name="contact-info" />
+      </div>
+
+      <div class="form-group">
+        <label for="location">LOCATION:</label>
+        <input type="text" id="location" name="location" />
+      </div>
+      <div class="form-group">
+        <label for="payment-options">SELECT PAYMENT OPTION:</label>
+        <select
+          id="payment-options"
+          name="payment-options"
+          onchange="showPaymentDetails()"
+        >
+          <option value="">Select an option</option>
+          <option value="100">US$100 – REGISTRATION FEE</option>
+          <option value="1100">
+            US$1,100 – Full Board & Lodge + Local Transport
+          </option>
+          <option value="2500">
+            US$2,500 – Full Board, Lodge, Local Transport & Tour
+          </option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+  <div class="info-container">
+    <h2>People Proclaiming the STATE OF AFRICA, Making Afrika Work</h2>
+    <h3>
+      The ADI conference is made possible through the generosity of our
+      supporters. To attend, participants are asked to contribute through the
+      following fee options:
+    </h3>
+    <ul>
+      <li>
+        $100 – Registration Fee Covers administrative costs, lunches, and light
+        meals during the conference.
+      </li>
+
+      <li>
+        US$1,000 – Full Board, Lodge, and Local Transport Includes
+        accommodation, meals, and local transport.
+      </li>
+      <li>
+        US$2,500 – Full Board, Lodge, Local Transport, and Tourism Package
+        Covers accommodation, meals, local transport, and a tour to sites like
+        Victoria Falls and Zambia’s national parks.
+      </li>
+      <p>
+        Payments can be made via bank transfer, CashUp, PayPal, WorldRemit,
+        Western Union, or directly through this website. We appreciate your
+        support and look forward to welcoming you! We encourage participants to
+        confirm their attendance early.
+        <strong
+          >Registrations received after December 15th will incur an additional
+          fee of US$25.</strong
+        >
+      </p>
+    </ul>
+    <img src="{% static 'images/afric1.png'%}" alt="African Image" />
+    <!-- Replace with your image -->
+  </div>
+</div>
+{% endblock %}
+
+<script>
+  function showPaymentDetails() {
+    const paymentDetails = document.getElementById("payment-details");
+    const selectedOption = document.getElementById("payment-options").value;
+
+    let detailsText = "";
+
+    switch (selectedOption) {
+      case "100":
+        detailsText =
+          "US$100 – Supports administrative costs, covers lunches and light meals during the conference.";
+        break;
+      case "1100":
+        detailsText =
+          "US$1,100 – Covers full board and lodge, as well as local transport.";
+        break;
+      case "2500":
+        detailsText =
+          "US$2,500 – Covers full board, lodge, local transport, and a round trip to tourism sites (e.g., Victoria Falls, walking safaris in Zambia's national parks).";
+        break;
+      default:
+        detailsText = ""; // Clear the text if no option is selected
+    }
+
+    paymentDetails.textContent = detailsText;
+  }
+</script>

@@ -1,0 +1,277 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="acc-hero">
+  <h1>Accommodation</h1>
+</section>
+
+<section class="suggested-places">
+  <div class="icon-container">
+    <img
+      src="{% static 'images/locateicon.png' %}"
+      alt="Accommodation Icon"
+      class="icon"
+    />
+  </div>
+
+  <h2 class="section-heading slide-right">
+    Suggested places to stay during the ADI
+  </h2>
+
+  <p class="accommodation-description">
+    For your convenience, the ADI Conference organizers have secured exclusive
+    discounts and special benefits at a selection of hotels and lodges in Lusaka
+    and Livingstone. You can find the full list of participating accommodations
+    and details here. Be sure to book through these options to take advantage of
+    the special offers available to conference participants!
+  </p>
+
+  <div class="places-list">
+    <!-- 15 places with unique onclick functions and slide-right class -->
+    <div class="place slide-right" onclick="showPopup('place1')">Place 1</div>
+    <div class="place slide-right" onclick="showPopup('place2')">Place 2</div>
+    <div class="place slide-right" onclick="showPopup('place3')">Place 3</div>
+    <div class="place slide-right" onclick="showPopup('place4')">Place 4</div>
+    <div class="place slide-right" onclick="showPopup('place5')">Place 5</div>
+    <div class="place slide-right" onclick="showPopup('place6')">Place 6</div>
+    <div class="place slide-right" onclick="showPopup('place7')">Place 7</div>
+    <div class="place slide-right" onclick="showPopup('place8')">Place 8</div>
+    <div class="place slide-right" onclick="showPopup('place9')">Place 9</div>
+    <div class="place slide-right" onclick="showPopup('place10')">Place 10</div>
+    <div class="place slide-right" onclick="showPopup('place11')">Place 11</div>
+    <div class="place slide-right" onclick="showPopup('place12')">Place 12</div>
+    <div class="place slide-right" onclick="showPopup('place13')">Place 13</div>
+    <div class="place slide-right" onclick="showPopup('place14')">Place 14</div>
+    <div class="place slide-right" onclick="showPopup('place15')">Place 15</div>
+  </div>
+</section>
+
+<!-- Popup Structure -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h3 id="place-name"></h3>
+    <p id="place-description"></p>
+    <div class="popup-images">
+      <img id="img1" src="" alt="Place Image 1" />
+      <img id="img2" src="" alt="Place Image 2" />
+      <img id="img3" src="" alt="Place Image 3" />
+    </div>
+  </div>
+</div>
+
+<section class="places-to-visit">
+  <div class="tours-travel">
+    <p class="recommended-tours">
+      <strong class="section-heading centered slide-right">
+        Recommended Tours and Travel Agencies </strong
+      ><br />
+      We have partnered with selected tour operators offering exclusive
+      discounted rates for conference participants. A full list of these
+      operators is available <a href="#">here</a>.
+    </p>
+
+    <p class="sightseeing-opportunities">
+      <strong class="section-heading centered slide-left">
+        Sightseeing Opportunities </strong
+      ><br />
+      For delegates interested in exploring Zambia's natural beauty, we have
+      curated special tour packages that include visits to the iconic
+      Musi-O-Tunya (Victoria Falls), walking safaris in Zambia's top national
+      parks, and other stunning destinations. If you would like to take part in
+      these exciting sightseeing experiences, please indicate your interest on
+      the registration form.
+    </p>
+  </div>
+  <h2 class="slide-in-right">Places to visit while in Lusaka</h2>
+
+  <div class="places-content">
+    <ul class="places-list">
+      <li class="slide-in-right" onclick="showModal('place1')">Lorem ipsum</li>
+      <li class="slide-in-right" onclick="showModal('place2')">
+        dolor sit amet
+      </li>
+      <li class="slide-in-right" onclick="showModal('place3')">consectetuer</li>
+      <li class="slide-in-right" onclick="showModal('place4')">
+        adipiscing elit
+      </li>
+      <li class="slide-in-right" onclick="showModal('place5')">
+        ed diam nonummy
+      </li>
+      <li class="slide-in-right" onclick="showModal('place6')">
+        nibh euismod tincidunt
+      </li>
+      <li class="slide-in-right" onclick="showModal('place7')">
+        ut laoreet dolore magn
+      </li>
+      <li class="slide-in-right" onclick="showModal('place8')">
+        aliquam erat volutpat
+      </li>
+      <li class="slide-in-right" onclick="showModal('place9')">
+        Ut wisi enim ad minim
+      </li>
+    </ul>
+
+    <div class="places-image slide-in-right">
+      <img
+        src="{% static 'images/afric1.png' %}"
+        alt="Place image"
+        class="main-image"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Modal template for place details -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 id="modal-title">Place Title</h3>
+    <p id="modal-description">Place Description</p>
+    <div class="modal-images">
+      <img id="modal-image1" src="path/to/image1.jpg" alt="Place Image 1" />
+      <img id="modal-image2" src="path/to/image2.jpg" alt="Place Image 2" />
+      <img id="modal-image3" src="path/to/image3.jpg" alt="Place Image 3" />
+    </div>
+  </div>
+</div>
+
+<script>
+  // Data for each place with unique descriptions and images
+  const placeData = {
+    place1: {
+      name: "Place 1",
+      description: "Description for Place 1 goes here.",
+      images: ["image1a.jpg", "image1b.jpg", "image1c.jpg"],
+    },
+    place2: {
+      name: "Place 2",
+      description: "Description for Place 2 goes here.",
+      images: ["image2a.jpg", "image2b.jpg", "image2c.jpg"],
+    },
+    place3: {
+      name: "Place 3",
+      description: "Description for Place 3 goes here.",
+      images: ["image3a.jpg", "image3b.jpg", "image3c.jpg"],
+    },
+    // Repeat for each place up to place15
+    place15: {
+      name: "Place 15",
+      description: "Description for Place 15 goes here.",
+      images: ["image15a.jpg", "image15b.jpg", "image15c.jpg"],
+    },
+  };
+
+  // Function to display the popup with unique content for each place
+  function showPopup(placeKey) {
+    const place = placeData[placeKey];
+    if (place) {
+      document.getElementById("popup").style.display = "flex";
+      document.getElementById("place-name").innerText = place.name;
+      document.getElementById("place-description").innerText =
+        place.description;
+      document.getElementById("img1").src = place.images[0];
+      document.getElementById("img2").src = place.images[1];
+      document.getElementById("img3").src = place.images[2];
+    }
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  //////////////////////////////
+
+  // Data for places
+  const placesData = {
+    place1: {
+      title: "Place 1",
+      description: "Description for Place 1.",
+      images: [
+        "path/to/image1.jpg",
+        "path/to/image2.jpg",
+        "path/to/image3.jpg",
+      ],
+    },
+    place2: {
+      title: "Place 2",
+      description: "Description for Place 2.",
+      images: [
+        "path/to/image1.jpg",
+        "path/to/image2.jpg",
+        "path/to/image3.jpg",
+      ],
+    },
+    // Add more places as needed
+  };
+
+  // Function to show modal with data
+  function showModal(placeId) {
+    const modal = document.getElementById("modal");
+    const data = placesData[placeId];
+
+    document.getElementById("modal-title").textContent = data.title;
+    document.getElementById("modal-description").textContent = data.description;
+    document.getElementById("modal-image1").src = data.images[0];
+    document.getElementById("modal-image2").src = data.images[1];
+    document.getElementById("modal-image3").src = data.images[2];
+
+    modal.style.display = "block";
+  }
+
+  // Function to close modal
+  function closeModal() {
+    const modal = document.getElementById("modal");
+    modal.style.display = "none";
+  }
+
+  // Close modal when clicking outside of modal content
+  window.onclick = function (event) {
+    const modal = document.getElementById("modal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const slideElements = document.querySelectorAll(
+      ".slide-right, .slide-left"
+    );
+
+    const observerOptions = {
+      threshold: 0.2, // Trigger when 20% of the element is in view
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("slide-in");
+          observer.unobserve(entry.target); // Unobserve to avoid repeated animations
+        }
+      });
+    }, observerOptions);
+
+    slideElements.forEach((element) => {
+      observer.observe(element);
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const slideElements = document.querySelectorAll(".slide-in-right");
+
+    function handleScroll() {
+      slideElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+        if (isVisible) {
+          element.classList.add("slide-in-active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check in case elements are already in view
+  });
+</script>
+
+{% endblock %}

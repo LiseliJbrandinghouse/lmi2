@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LMI Health</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">LMI Health</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'services' %}">Services</a></li>
+
+        <!-- Resources with Dropdown -->
+        <li class="dropdown">
+          <a href="#" onclick="toggleDropdown()">
+            Resources <span class="dropdown-icon">▼</span>
+          </a>
+          <ul id="dropdownMenu" class="dropdown-menu">
+            <li>
+              <a href="{% static 'documents/doc1.pdf' %}" download>
+                <span class="icon">📄</span> Building Great Network
+                <span class="download-icon">⬇️</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% static 'documents/doc2.pdf' %}" download>
+                <span class="icon">📄</span> Have Talent Resource
+                <span class="download-icon">⬇️</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% static 'documents/doc3.pdf' %}" download>
+                <span class="icon">📄</span> Good Interviewed Process
+                <span class="download-icon">⬇️</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li><a href="{% url 'make_appointment' %}">Appointments</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="footer-container">
+        <!-- Left Section: Logo and tagline -->
+        <div class="footer-left">
+          <img
+            src="{% static 'images/logo.png' %}"
+            alt="LMI Health Logo"
+            class="footer-logo"
+          />
+          <p class="footer-tagline">
+            LMI Health<br /><em>Your World Transformed.</em>
+          </p>
+        </div>
+
+        <!-- Center Section: Links -->
+        <div class="footer-center">
+          <h3 class="footer-cta">LMI HEALTH</h3>
+          <ul class="footer-links">
+            <li>SERVICES</li>
+            <li>RESOURCES</li>
+            <li>APPOINTMENTS</li>
+            <li>CONTACT</li>
+          </ul>
+        </div>
+
+        <!-- Right Section: CTA and social icons -->
+        <div class="footer-right">
+          <h3 class="footer-cta">BOOK NOW</h3>
+          <p class="footer-social-text">Follow us on socials</p>
+          <div class="footer-social-icons">
+            <div class="social-icon"></div>
+            <div class="social-icon"></div>
+            <div class="social-icon"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Section: Copyright -->
+      <div class="footer-bottom">
+        <p>All copyrights reserved. Created by Liseli J Branding House.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+
+      function toggleDropdown() {
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        dropdownMenu.style.display =
+          dropdownMenu.style.display === "block" ? "none" : "block";
+      }
+
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

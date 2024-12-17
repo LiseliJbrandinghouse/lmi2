@@ -1,0 +1,409 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="about-us-section">
+  <div class="lmi">
+    <h1>ABOUT US</h1>
+  </div>
+</section>
+
+<div class="about-wrapper">
+  <div class="about-lmi">
+    <p class="small-title">About Lifestyle Medical Institution</p>
+    <h1 class="main-title">
+      Your World <br />
+      <span class="highlighted-text">— Transformed.</span>
+    </h1>
+  </div>
+</div>
+<section class="lmi-about-us">
+  <div class="lmi-content">
+    <div class="text-content">
+      <img
+        src="{% static 'images/logo.png' %}"
+        alt="LMI Health Logo"
+        class="lmi-logo"
+      />
+      <h1>LMI Health</h1>
+      <p>
+        At LMI Health, we address the root causes of illness with sustainable
+        lifestyle changes, focusing on nutrition, activity, stress management,
+        and social connections to prevent and reverse chronic diseases. We
+        prioritize inclusivity and equity, ensuring everyone has access to
+        optimal health. We empower individuals and communities through
+        education, advocacy, and personalized care to take transformative steps
+        toward better health.
+      </p>
+    </div>
+    <div class="image-content">
+      <img
+        src="{% static 'images/kaite1.jpg' %}"
+        alt="Doctor"
+        class="lmi-image"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="filter-section">
+  <div class="filter-controls">
+    <button class="filter-btn active" data-target="reduce-burden">
+      Mission & Vision
+    </button>
+    <button class="filter-btn" data-target="enhance-experience">
+      Our Philosophy
+    </button>
+    <button class="filter-btn" data-target="thrive-independently">
+      Values
+    </button>
+  </div>
+  <div class="filter-content">
+    <!-- Content 1 -->
+    <div class="content-item active" id="reduce-burden">
+      <div class="content-image">
+        <img src="{% static 'images/dr.jpg' %}" alt="Reduce clinical burden" />
+      </div>
+      <div class="content-text">
+        <h2>Vision</h2>
+        <p>
+          To become the leading provider of evidence-based Lifestyle Medicine
+          services in the region, promoting holistic health practices as the
+          foundation of personal and collective well-being, and ultimately
+          fostering the creation of a “Blue Zone” in Zambia.
+        </p>
+        <h2>Mission</h2>
+        <p>
+          To demonstrate the transformative power of lifestyle interventions to
+          a society often reliant on alternative/conventional medicine by
+          helping people with chronic conditions reverse their effects and
+          potentially achieve remission. To promote holistic health and
+          well-being by becoming a hub for training healthcare professionals in
+          lifestyle medicine and educating the community on healthy living
+          practices. Additionally, we seek to transform the sector of
+          occupational health services, making specific occupational lifestyles
+          safer through policy enhancements and preventive approaches.
+        </p>
+      </div>
+    </div>
+    <!-- Content 2 -->
+    <div class="content-item" id="enhance-experience">
+      <div class="content-image">
+        <img
+          src="{% static 'images/kaite2.jpg' %}"
+          alt="Reduce clinical burden"
+        />
+      </div>
+      <div class="content-text">
+        <p>
+          At Lifestyle Medicine Institute (LMI), we believe that true health and
+          well-being are achieved by addressing the root causes of illness and
+          promoting sustainable lifestyle changes. Our approach is grounded in
+          evidence-based lifestyle medicine, emphasizing the critical role of
+          nutrition, physical activity, stress management, and social
+          connections in preventing and reversing chronic diseases. We focus on
+          addressing the root causes of illness rather than just relying on
+          medication, which often comes with side effects, increased costs, and
+          other complications.
+        </p>
+        <p>
+          We recognize the importance of intersectionality, understanding that
+          health disparities often arise from complex interplays of
+          socioeconomic factors, race, gender, and access to resources. Our
+          programs are designed to be inclusive and equitable, ensuring that all
+          individuals, regardless of their background, have the opportunity to
+          achieve optimal health.
+        </p>
+        <p>
+          In alignment with the principles of the American College of Lifestyle
+          Medicine, our philosophy is to empower individuals and communities
+          through education, advocacy, and personalized care. At LMI, we adhere
+          to the belief that “you can never achieve higher than your aim.”
+          Inspired by this, we encourage our tribe to continuously take small,
+          transformative steps that lure dreams into experience.
+        </p>
+      </div>
+    </div>
+    <!-- Content 3 -->
+    <div class="content-item" id="thrive-independently">
+      <div class="content-image">
+        <img src="{% static 'images/jk1.jpg' %}" alt="Reduce clinical burden" />
+      </div>
+      <div class="content-text">
+        <!-- <h2>Thrive independently</h2>
+        <p>
+          Empower your clients with tools and support for independent growth and
+          development.
+        </p>-->
+        <ul>
+          <li><span>+</span> Integrity</li>
+          <p>
+            We uphold the highest ethical standards in all our interactions.
+          </p>
+          <li><span>+</span> Compassion</li>
+          <p>
+            We provide care with empathy and respect for each individual’s
+            journey
+          </p>
+          <li><span>+</span> Innovation</li>
+          <p>
+            We continuously seek out the latest research and methods to improve
+            our services.
+          </p>
+          <li><span>+</span> Excellence</li>
+          <p>
+            We strive for excellence in every aspect of our work, from patient
+            care to community outreach.
+          </p>
+          <li><span>+</span> Leadership</li>
+          <p>
+            We strive to practice what we preach and lead in making healthy
+            personal decisions.
+          </p>
+          <li><span>+</span> Sustainability</li>
+          <p>
+            We only use practices that have a significant positive impact on
+            planetary health.
+          </p>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="our-story" id="our-story">
+  <div class="container">
+    <div class="story-header">
+      <h2>Our Story</h2>
+      <p>
+        Discover the journey of passion, perseverance, and purpose behind the
+        institute.
+      </p>
+    </div>
+    <div class="story-content">
+      <div class="story-text">
+        <div class="story-card" data-aos="fade-right">
+          <h3>Early Inspiration</h3>
+          <p>
+            Dr. Kaite’s journey began long before he stepped into the bustling
+            Emergency Department of a tertiary-level hospital in Zambia. Growing
+            up in the Seventh-day Adventist Church, he was immersed in a
+            community that championed the benefits of a healthy lifestyle.
+          </p>
+        </div>
+        <div class="story-card" data-aos="fade-left">
+          <h3>A Call for Change</h3>
+          <p>
+            Treating emergencies felt like endlessly mopping a flooded floor
+            without addressing the source of the leak. Determined to make a
+            profound difference, Dr. Kaite pursued a Master of Social and Public
+            Policy.
+          </p>
+        </div>
+        <div class="story-card" data-aos="fade-right">
+          <h3>The Lifestyle Medicine Discovery</h3>
+          <p>
+            Lifestyle Medicine illuminated the path he had been searching
+            for—combining medical expertise with preventive care. This was the
+            turning point in his mission to fight chronic diseases at their
+            root.
+          </p>
+        </div>
+        <div class="story-card" data-aos="fade-left">
+          <h3>A Vision Realized</h3>
+          <p>
+            Together with his father, John Kaite, the institute was founded to
+            champion holistic health. Their journey serves as an inspiring
+            narrative of hope, vision, and transformation.
+          </p>
+        </div>
+      </div>
+      <div class="story-image" data-aos="zoom-in">
+        <img
+          src="{% static 'images/Johnkaite.jpg' %}"
+          alt="Dr. Kaite's Journey"
+        />
+        <div class="motion-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="doctor-services-section">
+  <div class="content-wrapper">
+    <div class="words">
+      <span class="service-title">DOCTOR SERVICES</span>
+      <h2>Better connections lead to better care</h2>
+      <p>
+        Access more complete client records with clinical data exchange that
+        enables record sharing, care coordination, and referrals, all supported
+        by the doctor services network. Relevant information is automatically
+        integrated into your client’s record and surfaced during the visit.
+      </p>
+      <a href="#" class="cta-button">Learn more about our services</a>
+    </div>
+    <div class="content-image">
+      <img src="{% static 'images/dr3.webp' %}" alt="Doctor Services" />
+    </div>
+  </div>
+</div>
+
+<section class="directors-letter" id="directors-letter">
+  <div class="letter-container">
+    <h2 data-aos="fade-up">Director's Letter</h2>
+    <div class="letter-content">
+      <div class="letter-text" data-aos="fade-up">
+        <p class="letter-greeting">Hello Tribe,</p>
+        <p>
+          Welcome to a journey of transformation and hope. As you take a glimpse
+          into the Lifestyle Medicine Institute, know that you are joining a
+          movement dedicated to empowering lives and reshaping our future.
+        </p>
+        <p>
+          Together, we can break the cycle of chronic disease and foster a
+          healthier, more vibrant world. Your commitment and support are the
+          catalysts for change.
+        </p>
+        <p>Let’s walk this path of wellness and possibility, hand in hand.</p>
+        <p class="signature">With determination and gratitude,</p>
+        <p class="author">Dr. Kaite</p>
+        <p class="role">Founder and CEO</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="team-section">
+  <h2 class="team-title">LMI Team</h2>
+  <div class="team-grid">
+    <div class="team-member">
+      <div class="member-photo">
+        <img src="{% static 'images/kaitedr.webp' %}" alt="Dr. Kakungu Kaite" />
+      </div>
+      <div class="member-name">Dr. Kakungu Kaite</div>
+    </div>
+    <div class="team-member">
+      <div class="member-photo">
+        <img src="{% static 'images/drjk.webp' %}" alt="John Kaite" />
+      </div>
+      <div class="member-name">John Kaite</div>
+    </div>
+    <div class="team-member">
+      <div class="member-photo">
+        <img src="{% static 'images/dr2.webp' %}" alt="Jane Doe" />
+      </div>
+      <div class="member-name">Jane Doe</div>
+    </div>
+    <div class="team-member">
+      <div class="member-photo">
+        <img
+          src="{% static 'images/team/emily_smith.jpg' %}"
+          alt="Emily Smith"
+        />
+      </div>
+      <div class="member-name">Emily Smith</div>
+    </div>
+  </div>
+</section>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+  const buttons = document.querySelectorAll(".filter-btn");
+  const contents = document.querySelectorAll(".content-item");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Remove active class from buttons
+      buttons.forEach((button) => button.classList.remove("active"));
+      // Add active class to clicked button
+      btn.classList.add("active");
+
+      // Show relevant content
+      const targetId = btn.dataset.target;
+      contents.forEach((content) => {
+        content.classList.remove("active");
+        if (content.id === targetId) {
+          content.classList.add("active");
+        }
+      });
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const highlightedText = document.querySelector(".highlighted-text");
+    highlightedText.classList.add("animate");
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".text-content h1"); // Select the <h1>
+    header.classList.add("animate"); // Add the animation class
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".lmi-about-us");
+
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.add("animate"); // Add animation class
+            observer.unobserve(section); // Stop observing after animation triggers
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of the section is visible
+    );
+
+    observer.observe(section); // Observe the section
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterSection = document.querySelector(".filter-section");
+    const filterControls = document.querySelector(".filter-controls");
+
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            filterSection.classList.add("animate"); // Animate the whole section
+            filterControls.classList.add("animate"); // Animate filter controls
+            observer.unobserve(filterSection); // Stop observing for performance
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of the section is visible
+    );
+
+    observer.observe(filterSection); // Observe the section
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const section = document.querySelector(".doctor-services-section");
+    const serviceTitle = section.querySelector(".service-title");
+    const heading = section.querySelector("h2");
+
+    function handleScroll() {
+      const sectionTop = section.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (sectionTop < windowHeight - 100) {
+        section.classList.add("visible");
+        serviceTitle.classList.add("visible");
+        heading.classList.add("visible");
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+  });
+
+  AOS.init();
+
+  AOS.init({
+    duration: 800,
+    easing: "ease-in-out",
+    once: true,
+  });
+</script>
+
+{% endblock %}

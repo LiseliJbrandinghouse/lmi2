@@ -1,0 +1,1169 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<style>
+
+  .disease-management-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff; /* White background */
+  padding: 60px 300px;
+  gap: 40px;
+}
+
+.text-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.text-content h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #3c3c3c;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.image-content {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image-content img {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 8px; /* Rounded corners for the image */
+}
+
+/* Responsive Design */
+
+/* Medium Screens */
+@media (max-width: 1200px) {
+  .disease-management-section {
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 40px 60px;
+  }
+
+  .text-content {
+    order: 1;
+    max-width: 100%;
+  }
+
+  .image-content {
+    order: 2;
+    justify-content: center;
+  }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+  .disease-management-section {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .text-content h2 {
+    font-size: 2rem;
+  }
+
+  .text-content p {
+    font-size: 1rem;
+  }
+
+  .image-content img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.program-section {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 40px 300px;
+  background-color: #fff;
+}
+
+.program {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.program.reverse {
+  flex-direction: row-reverse;
+}
+
+.program-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.program-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  
+}
+
+.program-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.program-content h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #3c3c3c;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.program-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Responsive Design */
+
+/* Medium Screens */
+@media (max-width: 1200px) {
+  .program-section {
+    padding: 20px 60px;
+  }
+
+  .program {
+    gap: 20px;
+  }
+
+  .program-content h2 {
+    font-size: 2rem;
+  }
+
+  .program-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+  .program {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .program.reverse {
+    flex-direction: column;
+  }
+
+  .program-image img {
+    max-width: 90%;
+  }
+
+  .program-content {
+    max-width: 100%;
+  }
+}
+/* Section Styling */
+#exercise-section {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Adjust height as needed */
+  background: url('{% static "images/exe1.webp" %}') no-repeat center center/cover;
+}
+
+/* Text Overlay Styling */
+#exercise-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3); /* Slight dark overlay */
+}
+
+#exercise-section .overlay h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 6rem; /* Adjust font size as needed */
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  text-transform: uppercase;
+  mix-blend-mode: overlay; /* Achieves the transparent text effect */
+  letter-spacing: 5px;
+}
+
+/* General Section Styles */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 40px 300px;
+  background-color: #fff;
+}
+
+/* Individual Info Block */
+.info-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 100px;
+}
+
+.info-block.reverse-layout {
+  flex-direction: row-reverse; /* Reverse the layout for Image Left, Text Right */
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+/* Text Section Styling */
+.info-text {
+  flex: 1;
+  max-width: 600px;
+  margin-bottom: 100px;
+}
+
+.info-text h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #3c3c3c;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.info-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Image Section Styling */
+.info-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+
+/* Medium Screens */
+@media (max-width: 1200px) {
+  .info-section {
+    padding: 20px 60px;
+  }
+
+  .info-text h2 {
+    font-size: 2rem;
+  }
+
+  .info-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+  .info-block {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-block.reverse-layout {
+    flex-direction: column; /* Stack the reverse layout vertically */
+  }
+
+  .info-image img {
+    max-width: 90%;
+  }
+
+  .info-text {
+    max-width: 100%;
+  }
+}
+
+/* General Section Styling */
+.program-section {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 40px 300px;
+  background-color: #fff;
+}
+
+/* Individual Program Block */
+.program-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.program-block.reverse-layout {
+  flex-direction: row-reverse; /* Reverse layout for Image Left, Text Right */
+}
+
+/* Text Section Styling */
+.program-text {
+  flex: 1;
+  max-width: 600px;
+  margin-top: 100px;
+}
+
+.program-text h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #3c3c3c;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.program-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Image Section Styling */
+.program-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.program-image img {
+  max-width: 100%;
+  
+  
+}
+
+/* Responsive Design */
+
+/* Medium Screens */
+@media (max-width: 1200px) {
+  .program-section {
+    padding: 20px 40px;
+  }
+
+  .program-text h2 {
+    font-size: 2rem;
+  }
+
+  .program-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+  .program-block {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .program-block.reverse-layout {
+    flex-direction: column; /* Stack the reverse layout vertically */
+  }
+
+  .program-image img {
+    max-width: 90%;
+  }
+
+  .program-text {
+    max-width: 100%;
+  }
+}
+
+/* Eatwell Hero Section */
+.eatwell-hero-section {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Adjust height as needed */
+  background: url('{% static "images/eatwell.png" %}') no-repeat center center/cover;
+}
+
+/* Overlay and Text */
+.eatwell-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2); /* Slight dark overlay */
+}
+
+.eatwell-overlay h1 {
+  font-size: 6rem;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.9;
+  mix-blend-mode: overlay;
+  letter-spacing: 2px;
+}
+
+/* Responsive Design */
+
+/* Medium Screens */
+@media (max-width: 768px) {
+  .eatwell-hero-section {
+    height: 300px;
+  }
+
+  .eatwell-overlay h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Small Screens */
+@media (max-width: 480px) {
+  .eatwell-hero-section {
+    height: 250px;
+  }
+
+  .eatwell-overlay h1 {
+    font-size: 2rem;
+  }
+}
+
+#health-safety-diabetes-services {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+}
+
+#services-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#services-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+/* Grid Layout */
+#services-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Individual Service Card */
+.single-service {
+  flex: 1 1 calc(33.333% - 20px);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.single-service:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-image {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.service-image img {
+  width: 100%;
+  height: auto;
+}
+
+.single-service h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.single-service p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.service-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  position: absolute;
+  bottom: 20px;
+}
+
+.service-link:hover {
+  color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #services-layout {
+    flex-direction: column;
+  }
+
+  .single-service {
+    flex: 1 1 100%;
+  }
+}
+
+
+</style>
+
+<section
+  class="about-us-section"
+  
+>
+  <div class="lmi">
+    <h1>Our services</h1>
+  </div>
+</section>
+
+
+
+<section class="disease-management-section">
+  <div class="text-content">
+    <h2>Chronic Disease Management <br>& Risk Reduction Programs</h2>
+    <p>
+      Our programs are designed for long-term, sustainable solutions to manage
+      and reduce the risk of chronic conditions like hypertension, diabetes,
+      obesity, and some cancers. Each bespoke, evidence-based program is tailored
+      to meet individual needs, helping clients achieve lasting health through
+      practical lifestyle changes. No quick fixes—just effective, lasting results.
+    </p>
+  </div>
+  <div class="image-content">
+    <img src="{% static 'images/healthyf1.png' %}" alt="Nutrition Bowl">
+  </div>
+</section>
+
+<section class="program-section">
+  <!-- First Section -->
+  <div class="program">
+    <div class="program-image">
+      <img src="{% static 'images/Hypertension.png' %}" alt="Hypertension Program">
+    </div>
+    <div class="program-content">
+      <h2>Hypertension Lifestyle Program</h2>
+      <p>
+        Our programs are designed for long-term, sustainable solutions to manage
+        and reduce the risk of chronic conditions like hypertension, diabetes,
+        obesity, and some cancers. Each bespoke, evidence-based program is tailored
+        to meet individual needs, helping clients achieve lasting health through
+        practical lifestyle changes. No quick fixes—just effective, lasting results.
+      </p>
+    </div>
+  </div>
+
+  </section>
+
+<section class="info-section">
+  <!-- First Section: Text Left, Image Right -->
+  <div class="info-block">
+    <div class="info-text">
+      <h2>Diabetes Reversal & Management Program</h2>
+      <p>
+        Focused on reversing insulin resistance and managing type 2 diabetes through tailored lifestyle interventions, 
+        combining nutrition, physical activity, and stress management.
+      </p>
+    </div>
+    <div class="info-image">
+      <img src="{% static 'images/Diabetes.png' %}" alt="Diabetes Program">
+    </div>
+  </div>
+
+  <!-- Second Section: Image Left, Text Right -->
+  <div class="info-block reverse-layout">
+     <div class="info-text">
+      <h2>Exercise is Medicine Program</h2>
+      <p>
+        An individualized fitness plan designed to prevent and manage chronic conditions, using exercise 
+        as a therapeutic tool to improve overall health.
+      </p>
+    </div>
+    <div class="info-image">
+      <img src="{% static 'images/Exercise-Program.png' %}" alt="Exercise Program">
+    </div>
+   
+  </div>
+</section>
+
+<section id="exercise-section">
+  <div class="overlay">
+    <h1>EXERCISE</h1>
+  </div>
+</section>
+
+<section class="info-section">
+  <!-- First Section: Text Left, Image Right -->
+  <div class="info-block">
+    <div class="info-text">
+      <h2>Weight Management Program</h2>
+      <p>
+        A comprehensive weight loss and maintenance program that combines nutrition, exercise, and 
+        behavioral strategies for long-term success.
+      </p>
+    </div>
+    <div class="info-image">
+      <img src="{% static 'images/Weight-loss-Program.png' %}" alt="Weight Management Program">
+    </div>
+  </div>
+
+  <!-- Second Section: Image Left, Text Right -->
+  <div class="info-block reverse-layout">
+
+     <div class="info-text">
+      <h2>Corporate Wellness Program</h2>
+      <p>
+        An individualized fitness plan designed to prevent and manage chronic conditions, 
+        using exercise as a therapeutic tool to improve overall health.
+      </p>
+    </div>
+    <div class="info-image">
+      <img src="{% static 'images/Corporate-Wellness.png' %}" alt="Corporate Wellness Program">
+    </div>
+   
+  </div>
+</section>
+
+<section class="eatwell-hero-section">
+  <div class="eatwell-overlay">
+    <h1>EAT WELL</h1>
+  </div>
+</section>
+
+<section class="program-section">
+  <!-- First Section: Text Left, Image Right -->
+  <div class="program-block">
+    <div class="program-text">
+      <h2>Stress Resilience Program for High Performers</h2>
+      <p>
+        A comprehensive weight loss and maintenance program that combines nutrition, 
+        exercise, and behavioral strategies for long-term success.
+      </p>
+    </div>
+    <div class="program-image">
+      <img src="{% static 'images/stress-management.png' %}" alt="Stress Resilience Program">
+    </div>
+  </div>
+
+  <!-- Second Section: Image Left, Text Right -->
+  <div class="program-block reverse-layout">
+
+      <div class="program-text">
+      <h2>Annual Wellness Checkups</h2>
+      <p>
+        An individualized fitness plan designed to prevent and manage chronic conditions, 
+        using exercise as a therapeutic tool to improve overall health.
+      </p>
+    </div>
+    <div class="program-image">
+      <img src="{% static 'images/Annual-Check-ups2.png' %}" alt="Annual Wellness Checkups">
+    </div>
+  
+  </div>
+
+    <div class="program-block">
+    <div class="program-text">
+      <h2>Stress Resilience Program for High Performers</h2>
+      <p>
+        A comprehensive weight loss and maintenance program that combines nutrition, 
+        exercise, and behavioral strategies for long-term success.
+      </p>
+    </div>
+    <div class="program-image">
+      <img src="{% static 'images/tailor-made-service.webp' %}" alt="Stress Resilience Program">
+    </div>
+  </div>
+</section>
+
+<section class="our-story" id="our-story">
+  <div class="container">
+    <div class="story-header">
+      <h2>Our Specialized Services</h2>
+      <p>
+        Discover Our Specialized Services.
+      </p>
+    </div>
+    <div class="story-content">
+      <div class="story-text">
+        <div class="story-card" data-aos="fade-right">
+          <h3>Diabetes Empowerment Retreat</h3>
+          <p>
+           Mastering Lifestyle Interventions, a transformative three-
+day getaway designed to educate, inspire, and empower
+you in managing your diabetes.
+          </p>
+        </div>
+        <div class="story-card" data-aos="fade-left">
+          <h3>Safety Consulting with #OGSupport</h3>
+          <p>
+            OG Support is a comprehensive site safety consulting program that transforms workplace
+safety and boosts productivity. We perform detailed risk assessments and develop
+customized policies to mitigate hazards, provide on-site emergency medical support,
+deliver specialized occupational health training, conduct realistic safety simulations,
+and perform random safety checks. Our health screening ensures that employees are
+fit for their roles, helping employers select personnel best suited to minimize risk, thereby
+protecting the workforce. By partnering with us, you enhance workplace safety and
+productivity while contributing to broader community health and well-being.
+          </p>
+        </div>
+        <div class="story-card" data-aos="fade-right">
+          <h3>Health Consulting with
+#MicroChangesMegaHealth</h3>
+          <p>
+           Health consulting with #MicroChangesMegaHealth - Our service partners with
+organizations of any size to enhance employee well-being by making healthy choices
+the easier choice. We conduct a comprehensive assessment to identify opportunities for
+lifestyle improvements, such as encouraging natural movement, revamping office or school
+meals, optimizing snack options, and promoting healthier ingredient choices our tailored
+interventions aim to foster a healthier, more productive environment, leading to significant
+benefits for both employees and the organization.
+          </p>
+        </div>
+      
+      </div>
+      <div class="story-image" data-aos="zoom-in">
+        <img src="{% static 'images/kaite' %}" alt="Dr. Kaite's Journey" />
+        <div class="motion-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="health-safety-diabetes-services">
+  <div id="services-wrapper">
+    <h2 id="services-title">Our Specialized Services</h2>
+    <div id="services-layout">
+      <!-- Service 1 -->
+     <div class="single-service" data-aos="fade-up">
+  <div class="service-image">
+    <img src="health-icon.png" alt="Health Consulting Icon" />
+  </div>
+  <h3>Health Consulting</h3>
+  <p>
+    With <strong>#MicroChangesMegaHealth</strong>, we enhance employee well-being by making healthy choices the easier choice. Our tailored interventions foster healthier, more productive environments.
+  </p>
+  <a href="#" class="service-link" 
+     data-title="Health Consulting"
+     data-description="Health consulting with #MicroChangesMegaHealth - Our service partners with organizations of any size to enhance employee well-being by making healthy choices the easier choice. We conduct a comprehensive assessment to identify opportunities for lifestyle improvements, such as encouraging natural movement, revamping meals, optimizing snack options, and promoting healthier ingredient choices.">
+     Learn More
+  </a>
+</div>
+
+     <!-- Service 2 -->
+<div class="single-service" data-aos="fade-up" data-aos-delay="200">
+  <div class="service-image">
+    <img src="safety-icon.png" alt="Safety Consulting Icon" />
+  </div>
+  <h3>Safety Consulting</h3>
+  <p>
+    <strong>#OGSupport</strong> offers comprehensive site safety consulting to mitigate risks, boost productivity, and protect the workforce through tailored policies and training.
+  </p>
+  <a href="#" class="service-link" 
+     data-title="Safety Consulting"
+     data-description="OG Support is a comprehensive site safety consulting program that transforms workplace safety and boosts productivity. We perform detailed risk assessments, provide medical support, conduct safety simulations, and offer health screenings.">
+     Learn More
+  </a>
+</div>
+     <!-- Service 3 -->
+<div class="single-service" data-aos="fade-up" data-aos-delay="400">
+  <div class="service-image">
+    <img src="diabetes-icon.png" alt="Diabetes Empowerment Retreat Icon" />
+  </div>
+  <h3>Diabetes Empowerment Retreat</h3>
+  <p>
+    A transformative three-day getaway designed to educate, inspire, and empower individuals to better manage their diabetes through lifestyle interventions.
+  </p>
+  <a href="#" class="service-link" 
+     data-title="Diabetes Empowerment Retreat"
+     data-description="Mastering Lifestyle Interventions, a transformative three-day getaway designed to educate, inspire, and empower you in managing your diabetes.">
+     Learn More
+  </a>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- Popup Container -->
+<div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid #ccc; z-index: 1000; width: 80%; max-width: 600px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-family: 'Poppins', sans-serif;">
+  <h2 id="popup-title" style="margin-top: 0; margin-bottom: 15px;">Popup Title</h2>
+  <p id="popup-description" style="line-height: 1.6;">Popup description goes here.</p>
+  <button id="popup-close" style="margin-top: 10px; cursor: pointer;">Close</button>
+</div>
+
+
+      <div class="timeline-section">
+        <div class="timeline">
+          <div class="content">
+            <h1>6 Ways to Take Control of your Health.</h1>
+            <p>
+              Each step of your journey is crucial to achieving exceptional,
+              long-lasting, and natural results.
+            </p>
+
+            <div class="steps">
+              <div class="step-description-pair">
+                <div class="step" id="step1">
+                  <h3>1. Nutrition</h3>
+                  
+                </div>
+                <div class="description" id="desc1">
+                  <p>
+                   Whole-food, predominantly plant-based diet.
+                  </p>
+                </div>
+              </div>
+
+              <div class="step-description-pair">
+                <div class="step" id="step2">
+                  <h3>2. Physical Activity</h3>
+                  
+                </div>
+                <div class="description" id="desc2">
+                  <p>
+                    Regularly sit less and move more.
+                  </p>
+                </div>
+              </div>
+
+              <div class="step-description-pair">
+                <div class="step" id="step3">
+                  <h3>3. Stress Management</h3>
+                  
+                </div>
+                <div class="description" id="desc3">
+                  <p>
+                   Navigate inevitable life stress healthily.
+                  </p>
+                  <button class="appointment">make an appointment</button>
+                </div>
+              </div>
+
+              <div class="step-description-pair">
+                <div class="step" id="step4">
+                  <h3>4. Restorative Sleep</h3>
+                  
+                </div>
+                <div class="description" id="desc4">
+                  <p>Encourage positive sleep patterns.</p>
+                </div>
+              </div>
+
+               <div class="step-description-pair">
+                <div class="step" id="step4">
+                  <h3>5. Social Connection</h3>
+                  
+                </div>
+                <div class="description" id="desc5">
+                  <p>Your happiness and longevity depend on this.</p>
+                </div>
+              </div>
+
+               <div class="step-description-pair">
+                <div class="step" id="step4">
+                  <h3>6. Avoidance of Risky Substances</h3>
+                  
+                </div>
+                <div class="description" id="desc6">
+                  <p>Hedge your bets well.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="image">
+            <img src="Capture.PNG" alt="Timeline Image" />
+          </div>
+        </div>
+      </div>
+
+      <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+      <script>
+     
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const stepDescriptionPairs = document.querySelectorAll(
+            ".step-description-pair"
+          );
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  // Add visible class to step and description
+                  const step = entry.target.querySelector(".step");
+                  const description =
+                    entry.target.querySelector(".description");
+
+                  // Show step and slide up description
+                  if (step) step.classList.add("visible");
+                  if (description) {
+                    setTimeout(() => {
+                      description.classList.add("visible");
+                    }, 300); // Add a slight delay for a staggered animation
+                  }
+                }
+              });
+            },
+            { threshold: 0.5 } // Trigger when 50% of the element is visible
+          );
+
+          // Observe each pair
+          stepDescriptionPairs.forEach((pair) => observer.observe(pair));
+        });
+
+        // Slider Data
+        const sliderData = [
+          {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Hypertension Lifestyle Program",
+            description:
+              "Personalized plans that address blood pressure management through targeted nutrition, exercise, stress reduction, and improved sleep quality, parenting experts, guided curriculums, special needs support, childcare resources, and more.",
+          },
+          {
+            image: "{% static 'images/kaite.png' %}",
+            title: "Diabetes Reversal & Management Program",
+            description:
+              "Focused on reversing insulin resistance and managing type 2 diabetes through tailored lifestyle interventions, combining nutrition, physical activity, and stress management.",
+          },
+          {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Exercise is Medicine Program",
+            description:
+              "An individualized fitness plan designed to prevent and manage chronic conditions, using exercise as a therapeutic tool to improve overall health.",
+          },
+          {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Weight Management Program",
+            description:
+              "A comprehensive weight loss and maintenance program that combines nutrition, exercise, and behavioral strategies for long-term success.",
+          },
+          {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Corporate Wellness Program",
+            description:
+              "1. Six-part series offering evidence-based dietary strategies to prevent and manage lifestyle-related conditions such as diabetes, obesity, and some cancers. 2. Three-part series on nutrition, popular diets and dietary patterns that are effective in treatment and risk reduction for common lifestyle-related diseases (in-person or online). ",
+          },
+          {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Diabetes Outpatient Self-Management Training",
+            description:
+              "Empowering patients to independently manage their diabetes with personalized guidance on nutrition, exercise, and stress reduction.",
+          },
+          {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Stress Resilience Program for High Performers",
+            description:
+              "Designed for executives and high-performance individuals, this program offers stress management techniques, mindfulness practices, and lifestyle strategies to enhance mental clarity, reduce burnout, and maintain peak productivity",
+          },
+          {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Annual Wellness Checkups",
+            description:
+              "Personalized wellness visits that focus on chronic disease prevention, with tailored recommendations for maintaining long-term health.",
+          },
+           {
+            image: "{% static 'images/medi.webp' %}",
+            title: "Tailor-Made Service: Your Goals, Our Expertise",
+            description:
+              "Set your personal health goal, and if it aligns with our principles, we’ll create a custom program to help you achieve it—whether it’s weight loss, fitness improvement, or managing a specific condition.",
+          },
+          
+        ];
+
+        let currentIndex = 0;
+
+        // DOM Elements
+        const leftImage = document.querySelector(".left-image img");
+        const centerImage = document.querySelector(".center-image img");
+        const rightImage = document.querySelector(".right-image img");
+        const cardTitle = document.getElementById("cardTitle");
+        const cardDescription = document.getElementById("cardDescription");
+
+        // Update the slider
+        function updateSlider(index) {
+          const leftIndex = (index - 1 + sliderData.length) % sliderData.length;
+          const rightIndex = (index + 1) % sliderData.length;
+
+          leftImage.src = sliderData[leftIndex].image;
+          centerImage.src = sliderData[index].image;
+          rightImage.src = sliderData[rightIndex].image;
+
+          cardTitle.textContent = sliderData[index].title;
+          cardDescription.textContent = sliderData[index].description;
+        }
+
+       
+        
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Service data
+  const servicesData = {
+    "chronic-disease-management": {
+      title: "Chronic Disease Management",
+      desc: "Our programs are designed for long-term, sustainable solutions to manage and reduce the risk of chronic conditions like hypertension, diabetes, obesity, and some cancers.",
+    },
+    "stress-management": {
+      title: "Stress Management",
+      desc: "Navigate inevitable life stress healthily with our programs that emphasize mindfulness, mental clarity, and lifestyle strategies for lasting resilience.",
+    },
+    "corporate-wellness": {
+      title: "Corporate Wellness Program",
+      desc: "Comprehensive workplace wellness programs for disease prevention, mental clarity, and overall productivity, tailored for modern professionals.",
+    },
+    "safety-consulting": {
+      title: "Safety Consulting",
+      desc: "Enhance workplace safety and productivity through risk assessments, emergency medical support, and tailored safety policies.",
+    },
+    "health-consulting": {
+      title: "Health Consulting",
+      desc: "Fostering a healthier environment through comprehensive assessments and interventions designed to optimize employee well-being.",
+    },
+  };
+
+  // Selectors
+  const icons = document.querySelectorAll(".circular-icons .icon");
+  const titleEl = document.getElementById("service-title");
+  const descEl = document.getElementById("service-desc");
+
+  let currentIndex = 0;
+
+  // Function to update active icon and rotate
+  const updateFocus = (index) => {
+    const serviceKey = icons[index].getAttribute("data-service");
+    const service = servicesData[serviceKey];
+
+    // Update description if service exists
+    if (service) {
+      titleEl.textContent = service.title;
+      descEl.textContent = service.desc;
+    }
+
+    // Rotate icons
+    icons.forEach((icon, i) => {
+      const angle = ((i - index + icons.length) % icons.length) * 72; // Calculate rotation
+      icon.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translate(120px) rotate(${-angle}deg)`;
+    });
+  };
+
+  // Scroll listener
+  const onScroll = () => {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const newIndex = Math.floor(scrollY / 300) % icons.length;
+
+    if (newIndex !== currentIndex) {
+      currentIndex = newIndex;
+      updateFocus(currentIndex);
+    }
+  };
+
+  // Initialize
+  updateFocus(currentIndex);
+
+  // Attach scroll event
+  window.addEventListener("scroll", onScroll);
+});
+
+AOS.init();
+
+  AOS.init({
+    duration: 800,
+    easing: "ease-in-out",
+    once: true,
+  });
+// Import AOS for Animation on Scroll
+document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({
+    duration: 800,
+    easing: "ease-in-out",
+    once: true,
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const healthSafetySection = document.querySelector("#health-safety-diabetes-services");
+  function handleScroll() {
+    const sectionTop = healthSafetySection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (sectionTop < windowHeight - 100) {
+      healthSafetySection.classList.add("visible");
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll);
+});
+
+
+  // Modal Data
+   // Wait for DOM to fully load
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select all Learn More links
+    const learnMoreLinks = document.querySelectorAll(".service-link");
+
+    // Attach click event to each link
+    learnMoreLinks.forEach(link => {
+      link.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Get data attributes
+        const title = this.getAttribute("data-title");
+        const description = this.getAttribute("data-description");
+
+        // Populate the popup content
+        document.getElementById("popup-title").innerText = title;
+        document.getElementById("popup-description").innerText = description;
+
+        // Show the popup
+        document.getElementById("popup").style.display = "block";
+      });
+    });
+
+    // Close the popup when clicking the close button
+    document.getElementById("popup-close").addEventListener("click", () => {
+      document.getElementById("popup").style.display = "none";
+    });
+  });
+      </script>
+
+      {% endblock %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- Voting Hero Section -->
+<div class="voting-hero">
+  <h1>Uniting Africa politically and economically to create a federation. </br> Cast your Vote for a United Africa.</h1>
+</div>
+
+<!-- Voting Section -->
+<div class="vote-section">
+  <p>Do you believe in the vision of a united Africa?</p>
+  <label class="vote-checkbox">
+    Yes
+    <input type="checkbox" id="vote-checkbox" />
+  </label>
+  <div class="vote-count" id="vote-count">Votes: 0</div>
+</div>
+
+<script>
+  // Initialize vote count variable
+  let voteCount = 0;
+
+  // Check if user has already voted (using session storage)
+  const hasVoted = sessionStorage.getItem("hasVoted");
+  const voteCountElement = document.getElementById("vote-count");
+  const voteCheckbox = document.getElementById("vote-checkbox");
+
+  // If the user has already voted, set checkbox to checked and disable it
+  if (hasVoted) {
+    voteCheckbox.checked = true;
+    voteCheckbox.disabled = true;
+    voteCount = parseInt(sessionStorage.getItem("voteCount")) || 0;
+    voteCountElement.textContent = `Votes: ${voteCount}`;
+  }
+
+  // Event listener for the checkbox
+  voteCheckbox.addEventListener("change", function () {
+    if (this.checked && !hasVoted) {
+      voteCount += 1; // Increase vote count
+      sessionStorage.setItem("hasVoted", "true"); // Prevent multiple votes
+      sessionStorage.setItem("voteCount", voteCount); // Store the vote count
+      voteCheckbox.disabled = true; // Disable checkbox after vote
+      voteCountElement.textContent = `Votes: ${voteCount}`; // Update vote count display
+    }
+  });
+</script>
+{% endblock %}
